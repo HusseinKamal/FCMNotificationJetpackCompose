@@ -25,6 +25,11 @@ class ChatViewModel : ViewModel() {
         .build()
         .create()
 
+    init {
+        viewModelScope.launch {
+            Firebase.messaging.subscribeToTopic("chat").await()
+        }
+    }
     fun onNewTokenChange(newToken:String){
         state = state.copy(remoteToken = newToken)
     }
@@ -35,7 +40,7 @@ class ChatViewModel : ViewModel() {
         state = state.copy(messageText = message)
     }
 
-    fun senMessage(isBroadCast: Boolean){
+    fun sendMessage(isBroadCast: Boolean){
         viewModelScope.launch {
             val messageDto = SentMessageDataTransferObject(
                 to = if(isBroadCast) null else state.remoteToken,

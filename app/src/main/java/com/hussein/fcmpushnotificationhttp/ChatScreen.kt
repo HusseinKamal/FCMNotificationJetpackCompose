@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.filled.Share
@@ -26,13 +27,14 @@ import androidx.compose.ui.unit.dp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChatScreen(
-    messageText:String,
-    onMessageChange:(String)->Unit,
-    onMessageSend : ()->Unit,
-    onMessageBraadCast: ()->Unit
+    messageText: String,
+    onMessageChange: (String) -> Unit,
+    onMessageSend: () -> Unit,
+    onMessageBroadcast: () -> Unit
 ) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -40,32 +42,36 @@ fun ChatScreen(
             value = messageText,
             onValueChange = onMessageChange,
             placeholder = {
-                Text(text = "Enter a message")
+                Text("Enter a message")
             },
             modifier = Modifier
                 .padding(horizontal = 16.dp)
                 .fillMaxWidth()
         )
-
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(Modifier.height(16.dp))
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.End)
-            {
-                IconButton(onClick = {
-                    onMessageSend()
-                }) {
-                    Icon(imageVector = Icons.Default.Send,contentDescription = "Send")
-                }
-                Spacer(modifier = Modifier.height(16.dp))
-                IconButton(onClick = {
-                    onMessageBraadCast()
-                }) {
-                    Icon(imageVector = Icons.Default.Share,contentDescription = "Broadcast")
-                }
+                .padding(horizontal = 16.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.End
+        ) {
+            IconButton(
+                onClick = onMessageSend
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Send,
+                    contentDescription = "Send"
+                )
             }
+            Spacer(Modifier.width(16.dp))
+            IconButton(
+                onClick = onMessageBroadcast
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Share,
+                    contentDescription = "Broadcast"
+                )
+            }
+        }
     }
-
 }

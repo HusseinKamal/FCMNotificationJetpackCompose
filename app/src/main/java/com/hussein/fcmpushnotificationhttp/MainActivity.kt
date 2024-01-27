@@ -30,24 +30,22 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize()
                 ) {
                     val state = viewModel.state
-                    if(state.isEnteringToken){
+                    if(state.isEnteringToken) {
                         EnterTokenDialog(
                             token = state.remoteToken,
-                            onTokenChange =viewModel::onNewTokenChange,
+                            onTokenChange = viewModel::onNewTokenChange,
                             onSubmit = viewModel::onSubmitTokenChange
                         )
-                    }
-                    else
-                    {
+                    } else {
                         ChatScreen(
                             messageText = state.messageText,
-                            onMessageChange = viewModel::onMessageChange,
                             onMessageSend = {
-                                viewModel.senMessage(isBroadCast = false)
+                                viewModel.sendMessage(isBroadCast = false)
                             },
-                            onMessageBraadCast = {
-                                viewModel.senMessage(isBroadCast = true)
-                            }
+                            onMessageBroadcast = {
+                                viewModel.sendMessage(isBroadCast = true)
+                            },
+                            onMessageChange = viewModel::onMessageChange
                         )
                     }
                 }
