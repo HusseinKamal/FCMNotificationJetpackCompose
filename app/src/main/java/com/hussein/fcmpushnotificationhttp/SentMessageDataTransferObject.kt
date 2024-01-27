@@ -1,7 +1,7 @@
 package com.hussein.fcmpushnotificationhttp
 
 data class SentMessageDataTransferObject(
-    val to : String? =null,
+    val to : String?,
     val notification : NotificationBody
 )  //DTO class
 class NotificationBody(

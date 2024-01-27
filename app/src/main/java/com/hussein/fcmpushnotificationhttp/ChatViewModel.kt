@@ -25,11 +25,6 @@ class ChatViewModel : ViewModel() {
         .build()
         .create()
 
-    init {
-        viewModelScope.launch {
-            Firebase.messaging.subscribeToTopic("chat").await()
-        }
-    }
     fun onNewTokenChange(newToken:String){
         state = state.copy(remoteToken = newToken)
     }
