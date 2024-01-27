@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "454885776054",
+    "project_id": "fcmjetpackcompose",
+    "storage_bucket": "fcmjetpackcompose.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454885776054:android:419ba6b620d4615bb4e417",
+        "android_client_info": {
+          "package_name": "com.hussein.fcmpushnotificationhttp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLyY3T8Snblt6NQU-Tmdreq1Rtp71Cpzw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
